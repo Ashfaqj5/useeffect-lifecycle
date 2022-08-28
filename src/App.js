@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+  const [roll,setroll]=useState(1);
+  useEffect(()=>{
+    console.log("function in useeffect executed");
+    return ()=>{
+      console.log("return function in useeffect executed");
+    }
+  },[roll]);
+
+  function onClickHandler(){
+    setroll(roll+1);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>{roll}</p>
+      <button onClick={onClickHandler}>click to change roll</button>
+      {console.log("rendered")}
     </div>
   );
 }
